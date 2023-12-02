@@ -1,23 +1,23 @@
 {
   "development": {
-    "username": "nama_pengguna",
-    "password": "kata_sandi",
+    "username": "root",
+    "password": null,
     "database": "jalanin_dev",
-    "host": "localhost",
+    "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
-    "username": "nama_pengguna",
-    "password": "kata_sandi",
-    "database": "jalanin_dev",
-    "host": "localhost",
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
-    "username": "nama_pengguna",
-    "password": "kata_sandi",
-    "database": "jalanin_dev",
-    "host": "localhost",
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
     "dialect": "mysql"
   }
 }
