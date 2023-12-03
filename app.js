@@ -1,14 +1,13 @@
 const express = require("express");
-// const userRoutes = require("./routes/userRoutes");
+const newsRoutes = require("./router/newsRoutes");
 const sequelize = require("./config/db.config");
 const app = express();
 require("dotenv").config();
 
-// Menggunakan JSON body parser
 app.use(express.json());
 
 //routes
-// app.use("/api", userRoutes);
+app.use("/news", newsRoutes);
 
 const PORT = process.env.PORT;
 sequelize
@@ -19,10 +18,11 @@ sequelize
   })
   .then(() => {
     app.listen(PORT, () => {
-      console.log("Server running cuy");
-      console.log(PORT);
+      console.log("Server running cuy " + PORT);
     });
   })
   .catch((err) => {
     console.error("Unable to connect to the database:", err);
   });
+
+app.post;

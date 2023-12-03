@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": null,
-    "database": "jalanin_dev",
+    "database": "jalanin_dev_v1",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
