@@ -18,7 +18,7 @@ sequelize
     return sequelize.sync();
   })
   .then(() => {
-    app.listen(3000, () => {
+    app.listen(PORT, () => {
       console.log("Server running cuy");
       console.log(PORT);
     });
