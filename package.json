@@ -1,22 +1,20 @@
 {
-  "name": "backend-jakarta-5",
+  "name": "temp",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "main": "app.js",
   "dependencies": {
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "mysql2": "^3.6.5",
-    "sequelize": "^6.35.1"
-  },
-  "devDependencies": {
+    "sequelize": "^6.35.1",
     "sequelize-cli": "^6.6.2"
-  }
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "author": "",
+  "license": "ISC"
 }

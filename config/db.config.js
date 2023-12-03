@@ -6,15 +6,16 @@ require("dotenv").config();
 //   dialect: "mysql",
 // });
 
-// const sequelize = new Sequelize("jalanin_dev", process.env.DB_USER, process.env.DB_PASS, {
+const sequelize = new Sequelize(process.env.DB_DATABASE, process.env.DB_USER, process.env.DB_PASS, {
+  host: "localhost",
+  dialect: "mysql",
+  // logging: false,
+});
+
+// const sequelize = new Sequelize("jalanin_dev", "root", "", {
 //   host: "localhost",
 //   dialect: "mysql",
 // });
-
-const sequelize = new Sequelize("jalanin_dev", "root", "", {
-  host: "localhost",
-  dialect: "mysql",
-});
 
 // require("dotenv").config(); // Memuat variabel lingkungan dari .env ke process.env
 
