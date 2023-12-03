@@ -24,9 +24,9 @@ exports.createNews = async (req, res) => {
 // Menampilkan berita berdasarkan ID
 exports.getNewsById = async (req, res) => {
   try {
-    const news = await news.findByPk(req.params.id);
-    if (news) {
-      res.json(news);
+    const byIdnews = await news.findByPk(req.params.id);
+    if (byIdnews) {
+      res.json(byIdnews);
     } else {
       res.status(404).json({ message: "News not found" });
     }

@@ -1,5 +1,6 @@
 const express = require("express");
 const newsRoutes = require("./router/newsRoutes");
+const FAQRouter = require("./router/FAQRoutes");
 const sequelize = require("./config/db.config");
 const app = express();
 require("dotenv").config();
@@ -8,6 +9,7 @@ app.use(express.json());
 
 //routes
 app.use("/news", newsRoutes);
+app.use("/FAQ", FAQRouter);
 
 const PORT = process.env.PORT;
 sequelize
