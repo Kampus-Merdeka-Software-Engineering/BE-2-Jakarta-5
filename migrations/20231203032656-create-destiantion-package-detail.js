@@ -9,7 +9,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      start_date: {
+      start_time: {
         type: Sequelize.TIME,
       },
       end_time: {
@@ -20,6 +20,10 @@ module.exports = {
       },
       activity_place: {
         type: Sequelize.STRING,
+      },
+      destination_package_id: {
+        allowNull: true,
+        type: Sequelize.INTEGER,
       },
       createdAt: {
         allowNull: false,

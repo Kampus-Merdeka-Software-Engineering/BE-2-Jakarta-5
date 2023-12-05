@@ -9,11 +9,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      destination_package_detail_id: {
-        allowNull: true,
-        type: DataTypes.INTEGER,
-      },
-      destiantion_name: {
+      destination_name: {
         type: Sequelize.STRING,
       },
       destination_package_review: {
@@ -23,7 +19,7 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       image_url: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
       },
       createdAt: {
         allowNull: false,

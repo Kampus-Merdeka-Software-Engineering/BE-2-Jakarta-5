@@ -8,16 +8,31 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      destiantion_package_detail.belongsTo(models.destination_package, { foreignKey: "destination_package_detail_id" });
+      destiantion_package_detail.belongsTo(models.destination_package, { foreignKey: "destination_package_id" });
     }
   }
   destiantion_package_detail.init(
     {
-      destination_package_detail_id: DataTypes.INTEGER,
-      start_date: DataTypes.TIME,
-      end_time: DataTypes.TIME,
-      activity: DataTypes.STRING,
-      activity_place: DataTypes.STRING,
+      start_time: {
+        allowNull: false,
+        type: DataTypes.TIME,
+      },
+      end_time: {
+        allowNull: false,
+        type: DataTypes.TIME,
+      },
+      activity: {
+        allowNull: false,
+        type: DataTypes.STRING,
+      },
+      activity_place: {
+        allowNull: false,
+        type: DataTypes.STRING,
+      },
+      destination_package_id: {
+        allowNull: true,
+        type: DataTypes.INTEGER,
+      },
     },
     {
       sequelize,

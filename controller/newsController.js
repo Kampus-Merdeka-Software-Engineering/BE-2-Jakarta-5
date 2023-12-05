@@ -1,25 +1,56 @@
 const { news } = require("../models");
+const multer = require("multer");
+const path = require("path");
 
 // get all data
 exports.getAllNews = async (req, res) => {
   try {
     const allNews = await news.findAll();
-    res.json(allNews);
+    return res.json(allNews);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+// Membuat berita baru
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "../assets/image");
+  },
+  filename: (req, file, cb) => {
+    cb(null, `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`);
+  },
+});
+
+const upload = multer({ storage });
+
+exports.createNews = async (req, res) => {
+  try {
+    const { title, body, news_url } = req.body;
+
+    // Pastikan 'image' sesuai dengan nama field pada form untuk upload gambar
+    upload.single("image_url")(req, res, async (err) => {
+      if (err) {
+        return res.status(400).json({ message: "Error uploading file" });
+      }
+      const newNews = await news.create({ title, body, news_url, image_url: req.file.path });
+      res.status(201).json(newNews);
+    });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
 
-// Membuat berita baru
-exports.createNews = async (req, res) => {
-  try {
-    const { title, body, news_url } = req.body;
-    const newNews = await news.create({ title, body, news_url });
-    res.status(201).json(newNews);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-};
+// exports.createNews = async (req, res) => {
+//   try {
+//     const { title, body, news_url, image_url } = req.body;
+//     console.log(title);
+//     const newNews = await news.create({ title, body, news_url, image_url });
+//     return res.status(201).json(newNews);
+//   } catch (error) {
+//     return res.status(500).json({ message: error.message });
+//   }
+// };
 
 // Menampilkan berita berdasarkan ID
 exports.getNewsById = async (req, res) => {
@@ -28,10 +59,10 @@ exports.getNewsById = async (req, res) => {
     if (byIdnews) {
       res.json(byIdnews);
     } else {
-      res.status(404).json({ message: "News not found" });
+      return res.status(404).json({ message: "News not found" });
     }
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    return res.status(500).json({ message: error.message });
   }
 };
 
@@ -41,12 +72,12 @@ exports.updateNews = async (req, res) => {
     const { title, body, news_url } = req.body;
     const updatedNews = await news.update({ title, body, news_url }, { where: { id: req.params.id } });
     if (updatedNews[0]) {
-      res.json({ message: "News updated successfully" });
+      return res.json({ message: "News updated successfully" });
     } else {
       res.status(404).json({ message: "News not found" });
     }
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    return res.status(500).json({ message: error.message });
   }
 };
 
@@ -55,11 +86,11 @@ exports.deleteNews = async (req, res) => {
   try {
     const deletedRowCount = await news.destroy({ where: { id: req.params.id } });
     if (deletedRowCount) {
-      res.json({ message: "News deleted successfully" });
+      return res.json({ message: "News deleted successfully" });
     } else {
       res.status(404).json({ message: "News not found" });
     }
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    return res.status(500).json({ message: error.message });
   }
 };

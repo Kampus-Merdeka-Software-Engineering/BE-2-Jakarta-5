@@ -9,19 +9,15 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       destination_package.hasMany(models.order, { foreignKey: "destination_package_id" });
-      destination_package.hasOne(models.destiantion_package_detail, { foreignKey: "destination_package_detail_id" });
+      destination_package.hasMany(models.destiantion_package_detail, { foreignKey: "destination_package_id" });
     }
   }
   destination_package.init(
     {
-      destination_package_detail_id: {
-        allowNull: true,
-        type: DataTypes.INTEGER,
-      },
       destination_name: DataTypes.STRING,
       destination_package_review: DataTypes.INTEGER,
       package_price: DataTypes.INTEGER,
-      image_url: DataTypes.INTEGER,
+      image_url: DataTypes.STRING,
     },
     {
       sequelize,

@@ -22,11 +22,11 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.TEXT,
       },
       news_url: {
-        allowNull: false,
+        allowNull: true,
         type: DataTypes.STRING,
       },
       img_url: {
-        allowNull: false,
+        allowNull: true,
         type: DataTypes.STRING,
       },
     },
