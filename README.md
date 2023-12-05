@@ -12,5 +12,5 @@ NODE_ENV=development
 DB_USER=root
 DB_PASS=YOU_DB_PASS
 PORT=5000
-SESSION_SECRET='backend persuratan 2023'
+SESSION_SECRET='backend jalanin'
 ```
