@@ -4,7 +4,7 @@ const destinationPackageDetail = require("../controller/destinationPackageDetail
 
 router.get("/get", destinationPackageDetail.getAlldestiantion_package_detail);
 router.post("/create", destinationPackageDetail.createdestiantion_package_detail);
-router.get("/get/:id", destinationPackageDetail.getdestiantion_package_detailById);
+router.get("/get/:destination_package_id", destinationPackageDetail.getdestiantion_package_detailById);
 // router.delete("/get/:id", );
 
 module.exports = router;

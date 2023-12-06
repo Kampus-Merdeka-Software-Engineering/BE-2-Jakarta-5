@@ -1,8 +1,9 @@
 const express = require("express");
 const newsRoutes = require("./router/newsRoutes");
 const FAQRouter = require("./router/FAQRoutes");
-const destinationDetail = require("./router/destinationPackageDetail");
-const destinationPackage = require("./router/destiantionPackage");
+const destinationDetail = require("./router/destinationPackageDetailRoutes");
+const destinationPackage = require("./router/destiantionPackageRoutes");
+const order = require("./router/orderRoutes");
 const sequelize = require("./config/db.config");
 const app = express();
 require("dotenv").config();
@@ -12,8 +13,9 @@ app.use(express.json());
 //routes
 app.use("/news", newsRoutes);
 app.use("/FAQ", FAQRouter);
-app.use("/detinationDetail", destinationDetail);
-app.use("/detinationPackage", destinationPackage);
+app.use("/destinationDetail", destinationDetail);
+app.use("/destinationPackage", destinationPackage);
+app.use("/order", order);
 
 const PORT = process.env.PORT;
 sequelize

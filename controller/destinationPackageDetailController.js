@@ -11,14 +11,15 @@ exports.getAlldestiantion_package_detail = async (req, res) => {
 
 exports.createdestiantion_package_detail = async (req, res) => {
   try {
-    const { destination_name, destination_package_review, package_price, image_url } = req.body;
-    const newdestiantion_package_detail = await destiantion_package_detail.create({
-      destination_name,
-      destination_package_review,
-      package_price,
-      image_url,
+    const { start_time, end_time, activity, activity_place, destination_package_id } = req.body;
+    const data = await destiantion_package_detail.create({
+      start_time,
+      end_time,
+      activity,
+      activity_place,
+      destination_package_id,
     });
-    res.status(201).json(newdestiantion_package_detail);
+    res.status(201).json(data);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -26,11 +27,14 @@ exports.createdestiantion_package_detail = async (req, res) => {
 
 exports.getdestiantion_package_detailById = async (req, res) => {
   try {
-    const byIddestiantion_package_detail = await destiantion_package_detail.findByPk(req.params.id);
-    if (byIddestiantion_package_detail) {
-      return res.json(byIddestiantion_package_detail);
+    const { destination_package_id } = req.params;
+    const details = await destiantion_package_detail.findAll({
+      where: { destination_package_id: destination_package_id },
+    });
+    if (details.length > 0) {
+      return res.json(details);
     } else {
-      return res.status(404).json({ message: "user messange not found" });
+      return res.status(404).json({ message: "No destination_package_detail found for the specified destination_package_id" });
     }
   } catch (error) {
     return res.status(500).json({ message: error.message });
