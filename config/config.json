@@ -15,9 +15,9 @@
   },
   "production": {
     "username": "root",
-    "password": null,
+    "password": "H3dd1HcGEFFGhBaf6H2Bah1-h2fCBBgc",
     "database": "database_production",
-    "host": "127.0.0.1",
+    "host": "roundhouse.proxy.rlwy.net",
     "dialect": "mysql"
   }
 }
