@@ -2,7 +2,6 @@ const { news } = require("../models");
 const multer = require("multer");
 const path = require("path");
 
-// get all data
 exports.getAllNews = async (req, res) => {
   try {
     const allNews = await news.findAll();
@@ -12,7 +11,6 @@ exports.getAllNews = async (req, res) => {
   }
 };
 
-// Membuat berita baru
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, "../assets/image");
@@ -28,7 +26,6 @@ exports.createNews = async (req, res) => {
   try {
     const { title, body, news_url } = req.body;
 
-    // Pastikan 'image' sesuai dengan nama field pada form untuk upload gambar
     upload.single("image_url")(req, res, async (err) => {
       if (err) {
         return res.status(400).json({ message: "Error uploading file" });
@@ -52,7 +49,6 @@ exports.createNews = async (req, res) => {
 //   }
 // };
 
-// Menampilkan berita berdasarkan ID
 exports.getNewsById = async (req, res) => {
   try {
     const byIdnews = await news.findByPk(req.params.id);
@@ -66,7 +62,6 @@ exports.getNewsById = async (req, res) => {
   }
 };
 
-// Memperbarui berita berdasarkan ID
 exports.updateNews = async (req, res) => {
   try {
     const { title, body, news_url } = req.body;
@@ -81,7 +76,6 @@ exports.updateNews = async (req, res) => {
   }
 };
 
-// Menghapus berita berdasarkan ID
 exports.deleteNews = async (req, res) => {
   try {
     const deletedRowCount = await news.destroy({ where: { id: req.params.id } });
