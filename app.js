@@ -5,15 +5,16 @@ const destinationDetail = require("./router/destinationPackageDetailRoutes");
 const destinationPackage = require("./router/destiantionPackageRoutes");
 const order = require("./router/orderRoutes");
 const sequelize = require("./config/db.config");
+const cors = require("cors");
 const app = express();
 require("dotenv").config();
 
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  next();
-});
+app.use(
+  cors({
+    origin: "*",
+  })
+);
+
 app.use(express.json());
 
 //routes
